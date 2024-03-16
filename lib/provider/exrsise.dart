@@ -27,7 +27,7 @@ List<tip_item> tip_list = [];
   int tipcount=0;
 int tipread=0;
 
-//  await sql1.retrieveData();
+
 
 class Exrsise with ChangeNotifier
 {
@@ -67,9 +67,16 @@ void remove_exesise(item i) {
   
   plan_list.remove(i);
   counter_exrsise--;
+  if(completed_exrsis>0)
+  {
+    completed_exrsis--;
+  }
+  
     notifyListeners();
 
 }
+
+
 
 
 // void remove_exesise(List<Widget> plan_list, Widget itemToRemove) {
@@ -115,8 +122,13 @@ void remove_all()
 
   void removetip(tip_item newTip)
   {
-    tip_list.remove(newTip);
+    
     tipcount--;
+    if(tipread>0)
+    {
+      tipread--;
+    }
+    tip_list.remove(newTip);
      notifyListeners();
   }
    
@@ -128,4 +140,17 @@ void remove_all()
      notifyListeners();
    }
 
+update_exsrsie_state(bool check)
+{
+ 
+ check?completed_exrsis++:completed_exrsis--;
+  notifyListeners();
+}
+///////////////////////////
+update_tip_state(bool check)
+{
+ 
+ check?tipread++:tipread--;
+}
+   notifyListeners();
 }

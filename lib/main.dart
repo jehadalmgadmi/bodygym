@@ -11,13 +11,15 @@ import 'plan_gym.dart';
 import 'package:provider/provider.dart';
 
 
- db_function db_fun=db_function();
 
+ db_function db_fun=db_function();
+ 
 void main() {
-  runApp(const MyApp());
+  runApp(const MyApp( ));
    
-     db_fun.selectdata(plan_list);
+  db_fun.selectdata(plan_list);
      db_fun.select_tip_data(tip_list);
+
 }
 
 class MyApp extends StatelessWidget {
@@ -27,6 +29,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
+  
     return ChangeNotifierProvider(
       create: (context) {return Exrsise();},
       child: MaterialApp(
@@ -38,22 +41,26 @@ class MyApp extends StatelessWidget {
 }
 
 class  Bodygym extends StatefulWidget {
+
   const  Bodygym({super.key});
+
 
   @override
   State< Bodygym> createState() => _MyWidgetState();
+  
 }
 
 class _MyWidgetState extends State< Bodygym> {
   
+
+
   @override
   Widget build(BuildContext context) {
     
+   
       // ignore: unused_local_variable
       final exe =Provider.of<Exrsise>(context);
         
-     
-
      return Scaffold(
       backgroundColor:  Color.fromARGB(231, 255, 255, 255),
       appBar: AppBar(
@@ -283,7 +290,7 @@ class _MyWidgetState extends State< Bodygym> {
                                     Text("Performed Exercises",
                                     style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
                                     SizedBox(width: 20,),
-                                    Text("$completed_exrsis/$counter_exrsise",
+                                    Text("${ completed_exrsis}/$counter_exrsise",
                                     style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
                                    
                                    SizedBox(width: 30,),

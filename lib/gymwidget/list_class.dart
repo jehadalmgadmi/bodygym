@@ -62,7 +62,7 @@ item(main_image:'assets/image/alternating_lunge.gif', name: 'alternating_lunge',
 
 //هدة اللست خاصة بتمارين الصاله
 List<item>hall_list=[
-item(main_image:'assets/image/oblique_dumbell.gif', name: 'Oblique Dumbell', count: '13 X2',
+item(main_image:'assets/image/oblique_dumbell.gif', name: 'Oblique Dumbell', count: '25 X3',
  explane: "ابدا بالجلوس على مقعد مائل مع تتبيث قدميك على الارض احمل دراعيك الى جانبك مع ابقاء المعصم مستقيم قدر الامكان",
   image1: "assets/image/arm.jpg", image2: "assets/image/bay.jpg", explane_state: false)
 ,

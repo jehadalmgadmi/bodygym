@@ -1,11 +1,15 @@
 import 'package:bodygym/provider/exrsise.dart';
 import 'package:bodygym/gymwidget/list_class.dart';
+import 'package:flutter/cupertino.dart';
+
 
 class db_function {
   selectdata(List l1) async {
     List<Map<String, dynamic>> response =
         await sql1.readData("SELECT * FROM exrsise");
 // تحويل النتيجة إلى كائنات Item وإضافتها إلى قائمة itemsList
+   
+
     response.forEach((row) {
       item newitem = item(
         main_image: row['main_image'],
@@ -18,7 +22,17 @@ class db_function {
       );
       l1.add(newitem);
       counter_exrsise++;
-    });
+    }
+  
+    );
+    response.forEach((Row) {
+      if(
+      Row['exsrsis_state']==1 )
+      {
+        completed_exrsis++;
+      }
+
+     });
   }
 
 //تتحقق من من الاسم موجود اولا تم تقوم بالحدف
@@ -53,6 +67,16 @@ class db_function {
       l1.add(newitem);
       tipcount++;
     });
+     
+      
+       response.forEach((Row) {
+      if(
+      Row['read_state']==1 )
+      {
+        tipread++;
+      }
+
+     });
   }
 
 ///////////////////delet tip
@@ -72,6 +96,7 @@ class db_function {
     ''');
     // تحقق مما إذا كانت النتيجة فارغة أم لا
     if (result.isNotEmpty) {
+      // ignore: unused_local_variable
       int response = await sql1.updateData('''
         UPDATE "tips"
         SET  main_titel = '${t.titl}',contant = '${t.contant}', read_state = '0'
@@ -87,23 +112,29 @@ class db_function {
     return response;
   }
 
-update_read(tip_item tt)
+update_read(bool s,String n)
  async{
        
+       // ignore: unused_local_variable
        int response = await sql1.updateData('''
         UPDATE "tips"
-        SET  read_state = '${tt.read_state?1:0}'
-        WHERE main_titel = '${tt.titl}';
+        SET  read_state = '${s?1:0}'
+        WHERE main_titel = '${n}';
       ''');
 }
 
-update_plan_state(item tt)
+update_plan_state(bool update_state,String update_name)
  async{
        
+       // ignore: unused_local_variable
        int response = await sql1.updateData('''
         UPDATE "exrsise"
-        SET  exsrsis_state = '${tt.explane_state?1:0}'
-        WHERE exsrsis_name = '${tt.name}';
+        SET  exsrsis_state = '${update_state?1:0}'
+        WHERE exsrsis_name = '${update_name}';
       ''');
 }
+
 }
+
+
+

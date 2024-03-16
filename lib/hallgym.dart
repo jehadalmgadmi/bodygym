@@ -135,7 +135,7 @@ class _MyWidgetState extends State<hallgym> {
                                       child: Text(
                                         // خاصية للنص تجعل الكتابة من اليمين لليسار
                                         textDirection: TextDirection.rtl,
-                                       exsrsis_list[index].explane,
+                                       hall_list[index].explane,
                                         style: TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.bold ,fontFamily: 'font_1',

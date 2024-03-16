@@ -75,8 +75,6 @@ class _HealthTipState extends State<HealthTip> {
                         showBottomSheet(
                           context: context,
                           builder: (BuildContext context) {
-                            TextEditingController _textEditingController =
-                                TextEditingController();
                             return Scaffold(
                               backgroundColor:
                                   Color.fromARGB(173, 255, 255, 255),
@@ -152,7 +150,7 @@ class _HealthTipState extends State<HealthTip> {
                                                           TextField(
                                                             textInputAction:
                                                                 TextInputAction
-                                                                    .next,
+                                                                    .done,
                                                             controller:
                                                                 contentController,
                                                             maxLength: 300,
@@ -167,8 +165,7 @@ class _HealthTipState extends State<HealthTip> {
                                                                         TextStyle(
                                                                             fontSize:
                                                                                 20),
-                                                                    hintMaxLines:
-                                                                        20),
+                                                                 ),
                                                             keyboardType:
                                                                 TextInputType
                                                                     .text,
@@ -216,15 +213,13 @@ class _HealthTipState extends State<HealthTip> {
                                        
                                        fun.delet_tip(tip_list[index]);
                                        setState(() {
-                                        if( tip_list[index].read_state==true)
-                      {
-                         completed_exrsis--;
-                      }
-                      
-                      tip_list[index].read_state=false;
+                   
+            
+                                    tip_list[index].read_state=false;
 
                                        exe.removetip(tip_list[index]);
                                         });
+
                                          Navigator.pop(context);
                                       },
                                       child: Text(
@@ -273,16 +268,10 @@ class _HealthTipState extends State<HealthTip> {
                                         
                                       
                   tip_list[index].read_state = !tip_list[index].read_state;
-                if(tip_list[index].read_state==true)
-                {
-         tipread++; 
-      } else {
-         tipread--; 
-      }
-             
-                     
-                              
                                 });
+                      
+                      fun.update_read(tip_list[index].read_state, tip_list[index].titl);
+                      exe.update_tip_state(  tip_list[index].read_state);
                               },
                               icon: Icon(
                                 Icons.remove_red_eye,
